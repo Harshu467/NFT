@@ -1,4 +1,3 @@
-import { View } from "react-native"
 import { createStackNavigator } from '@react-navigation/stack';
 import {NavigationContainer,DefaultTheme} from '@react-navigation/native';
 import { useFonts } from "expo-font";
@@ -14,9 +13,13 @@ const theme = {
 }
 const App = () => {
   const [loaded] = useFonts({
-
-    }
-  )
+    InterBold:require("./assets/assets/fonts/Inter-Bold.ttf"),
+    InterLight:require("./assets/assets/fonts/Inter-Light.ttf"),
+    InterMedium:require("./assets/assets/fonts/Inter-Medium.ttf"),
+    InterRegular:require("./assets/assets/fonts/Inter-Regular.ttf"),
+    InterSemiBold:require("./assets/assets/fonts/Inter-SemiBold.ttf"),
+    });
+    if(!loaded) return null;
   return (
     <NavigationContainer theme={theme}>
       <StackNavigator screenOptions={{headerShown:false}} initialRouteName="Home" >
