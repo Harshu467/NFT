@@ -8,8 +8,8 @@ const theme = {
   ...DefaultTheme,
   colors:{
     ...DefaultTheme.colors,
-    background:"transparent"
-  }
+    background:"transparent",
+  },
 }
 const App = () => {
   const [loaded] = useFonts({
@@ -22,10 +22,10 @@ const App = () => {
     if(!loaded) return null;
   return (
     <NavigationContainer theme={theme}>
-      <StackNavigator screenOptions={{headerShown:false}} initialRouteName="Home" >
+      <Stack.Navigator screenoptions={{headerShown:false}} initialroutename="Home" >
         <Stack.Screen  name="Home" component={Home} />
         <Stack.Screen name="Details" component={Details}/>
-      </StackNavigator>
+      </Stack.Navigator>
     </NavigationContainer>
   )
 }
