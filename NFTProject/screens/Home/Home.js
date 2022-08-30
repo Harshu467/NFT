@@ -12,7 +12,7 @@ const Home = () => {
         <View style={{zIndex:0}} >
           <FlatList 
           data={NFTData}
-          keyExtractor={({item})=> item.id }
+          // keyExtractor={({item})=> item.id }
           renderItem={({item})=><NFTCard data={item} />}
           showsVerticalScrollIndicator={false}
           ListHeaderComponent={<HomeHeader/>}
@@ -33,5 +33,4 @@ const Home = () => {
     </SafeAreaView>
   )
 }
-
 export default Home
