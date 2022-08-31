@@ -2,8 +2,15 @@ import { View,Text,Image,StatusBar,FlatList,SafeAreaView } from "react-native"
 import { COLORS, assets,SHADOWS,SIZES,FONTS } from "../../constants"
 
 import { SubInfo, RectButton,CircleButton,FocusedStatusBar,DetailsDesc,DetailsBid } from '../../Components'
-import DetailsBid from "../../Components";
-import DetailsBid from "../../Components";
+import React from "react"
+const DetailsHeader =({data,navigation})=>(
+  <View style={{width:'100%',height:373}}>
+    <Image 
+    source={data.image}
+
+    />
+  </View>
+)
 const Details = ({route,navigation}) => {
   return (
     <SafeAreaView style={{flex:1}}>
@@ -27,9 +34,14 @@ const Details = ({route,navigation}) => {
       <FlatList 
       data={data.bids}
       renderItem={({item})=><DetailsBid bid={item}/>}
-      keyExtractor={(item)=>item.id}
+      // keyExtractor={(item)=>item.id}
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{paddingBottom:SIZES.extraLarge*3}}
+      ListHeaderComponent={()=>(
+        <React.Fragment>
+          <DetailsHeader data={data} navigation={navigation} />
+        </React.Fragment>
+      )}
       />
     </SafeAreaView>
   )
