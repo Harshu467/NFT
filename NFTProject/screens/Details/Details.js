@@ -10,6 +10,18 @@ const DetailsHeader =({data,navigation})=>(
     resizeMode='cover'
     style={{width:'100%',height:'100%'}}
     />
+    <CircleButton 
+    imgUrl={assets.left}
+    handlePress={()=> navigation.goBack()}
+    left={15}
+    top={StatusBar.currentHeight + 10}
+    />
+    <View style={{position:'absolute',right:40}}>
+      <CircleButton 
+      imgUrl={assets.heart}
+      top={StatusBar.currentHeight + 10}
+      />
+    </View>
   </View>
 )
 const Details = ({route,navigation}) => {
@@ -36,12 +48,16 @@ const Details = ({route,navigation}) => {
       <FlatList 
       data={data.bids}
       renderItem={({item})=><DetailsBid bid={item}/>}
-      // keyExtractor={(item)=>item.id}
+      keyExtractor={(item)=>item.id}
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{paddingBottom:SIZES.extraLarge*3}}
       ListHeaderComponent={()=>(
         <React.Fragment>
           <DetailsHeader data={data} navigation={navigation} />
+            <SubInfo />
+            <View style={{padding:SIZES.font}}>
+              <DetailsDesc data={data} />
+            </View>
         </React.Fragment>
       )}
       />
