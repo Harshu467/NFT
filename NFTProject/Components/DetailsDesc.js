@@ -3,6 +3,8 @@ import { COLORS, FONTS, SIZES } from '../constants'
 import { useState } from 'react'
 import { EthPrice, NFTTitle } from './SubInfo'
 const DetailsDesc = ({ data }) => {
+  const [text, settext] = useState(data.description.slice(0,100));
+  const [readMore, setreadMore] = useState(false);
   return (
     <>
       <View style={{
@@ -33,7 +35,27 @@ const DetailsDesc = ({ data }) => {
             fontFamily: FONTS.regular,
             color: COLORS.secondary,
             lineHeight:SIZES.large,
-          }}>{data.description}</Text>
+          }}>{text}
+          {!readMore && '...'}
+          <Text style={{
+            fontSize: SIZES.small,
+            fontFamily: FONTS.semiBold,
+            color: COLORS.primary,
+          }}
+          onPress={()=>{
+            if(!readMore)
+            {
+              settext(data.description);
+              setreadMore(true);
+            }else{
+              settext(data.description.slice(0,100));
+              setreadMore(false);
+
+            }
+          }}>
+            {readMore ? 'Show Less' : "Read More"}
+          </Text>
+          </Text>
         </View>
       </View>
     </>
